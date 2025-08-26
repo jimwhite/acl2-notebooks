@@ -1,13 +1,20 @@
 {
     "name": "ACL2-Jupyter",
     "image": "acl2-jupyter:latest",
-    "forwardPorts": [
-        8888
-    ],
+    "forwardPorts": [8888],
     "portsAttributes": {
         "8888": {
             "label": "Jupyter",
-            "requireLocalPort": true
+            "onAutoForward": "notify",
+            "requireLocalPort": false
+        }
+    },
+    "postCreateCommand": "echo 'Container ready! Jupyter should be available on port 8888'",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "ms-toolsai.jupyter"
+            ]
         }
     }
 }
